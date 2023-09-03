@@ -28,3 +28,11 @@
 2. 资源服务器可以使用公钥自动校验客户端请求的token（类似加签验签的过程），也可以通过调用授权服务服务器进行校验
 3. 客户端利用秘钥secrets获取access_token应该是客户端后台去做，避免秘钥泄露
 4. 分配的token应该包含发行者信息、资源主体、访问范围和失效时间
+5. http的授权请求头Authorization格式是: <auth-scheme> <authorization-parameters>，但是Bear不是标准的auth-schema,
+是如框架oauth2.0的规范
+
+
+引申知识：<br/>
+1.为什么要把认证信息放在header（并且使用标准的Authorization头格式）而不是请求体或者url
+> - 最佳实践，满足包括如oauth2.0在内的认证框架规范
+> - 避免认证信息被各种日志框架打印记录（如access.log等把请求url和请求体打印）
