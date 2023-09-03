@@ -1,8 +1,9 @@
 package com.example.demo.controller;
 
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.alibaba.fastjson.JSONObject;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * http学习
@@ -11,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/http-tech")
 public class HttpTechController {
 
-
-    public String redirect(@RequestBody String req){
-        return null;
+    @PostMapping("/login")
+    public String redirect(@Valid  @RequestBody @NotNull JSONObject req){
+        return req.toString();
     }
 
 }
